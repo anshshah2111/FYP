@@ -1,0 +1,127 @@
+
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <title>Speech Processing by NLP</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+   <link rel="stylesheet" href="../static/css/button2.css" /> 
+  </head>
+  <body>
+    <header>
+      <h1> <a href="/fyp">Natural Language Processing: Using Google Text to Speech & self-created LSTM API</a></h1>
+    </header>
+    <main>
+      <button id="button">Start listening</button>
+      <div id="result"></div>
+      <p id="goal_location"></p>
+      <p id="message" hidden aria-hidden="true">
+        Your browser doesn't support Speech Recognition. Sorry.
+      </p>
+       <!-- <div id="ansh">
+        <ul id="y">
+          <li id="x"><span>Go to path Navigation</span></li>
+         
+        </ul>
+        </div>  -->
+      
+    </main>
+    <footer>
+     
+        <!-- Inspiration: https://dribbble.com/shots/4397812-Click-Me -->
+       
+        
+      <p>Built for Implementation by Parth, Ansh & Parth  </p>
+    </footer>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("button");
+        const result = document.getElementById("result");
+        const goal_location = document.getElementById("goal_location");
+        const main = document.getElementsByTagName("main")[0];
+        let listening = false;
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (typeof SpeechRecognition !== "undefined") {
+          const recognition = new SpeechRecognition();
+
+          const stop = async() => {
+            main.classList.remove("speaking");
+            recognition.stop();
+            button.textContent = "Start listening";
+            console.log(result.textContent)
+            //API request here
+            try {
+            var bodyFormData = new FormData();
+            bodyFormData.append('instruction',result.textContent);
+        
+            const res=await axios.post('/check/',bodyFormData);
+            console.log(res.data.message);
+            console.log(JSON.stringify(res))
+            var gl="The predicted Goal Location is ";
+            if(res.data.message)
+            {
+              goal_location.textContent=gl.concat(res.data.message)  
+            }
+            else
+            {
+            goal_location.textContent="Goal Location Unidentified";
+            }
+                
+            } catch (error) {
+                console.log(error);
+                
+            }
+           
+            
+          };
+
+          const start = () => {
+            main.classList.add("speaking");
+            recognition.start();
+            button.textContent = "Stop listening";
+          };
+
+          const onResult = event => {
+            result.innerHTML = "";
+            var final_text=""
+            for (const res of event.results) {
+              const text = document.createTextNode(res[0].transcript);
+              const p = document.createElement("p");
+              if (res.isFinal) {
+                p.classList.add("final");
+                
+                
+              }
+              p.appendChild(text);
+              result.appendChild(p);
+              final_text.concat(p.textContent)
+            //   console.log(p.textContent)
+              
+            }
+            // console.log(result.textContent)
+          };
+          recognition.continuous = true;
+          recognition.interimResults = true;
+          recognition.addEventListener("result", onResult);
+          button.addEventListener("click", event => {
+            listening ? stop() : start();
+            listening = !listening;
+          });
+        } else {
+          button.remove();
+          const message = document.getElementById("message");
+          message.removeAttribute("hidden");
+          message.setAttribute("aria-hidden", "false");
+        }
+      });
+    </script>
+    <!-- <script src="../static/js/button2.js"></script>  -->
+  </body>
+</html>
