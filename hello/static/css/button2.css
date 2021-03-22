@@ -11,7 +11,7 @@
   font-size: 20px;
   width: 8em;
   height: 3em;
-  color: orange;
+  color: white;
   border-left: 0.08em solid;
   position: relative;
   margin-top: 0.8em;
@@ -40,6 +40,7 @@
   top: 20%;
   left: calc(-0.15em * 2 - 0.08em * 3);
   filter: brightness(0.6);
+  
 }
 
 #x span{
@@ -48,8 +49,9 @@
   top: -10%;
   box-sizing: border-box;
   border: 0.08em solid;
-  background-color: #333;
+  background-color: rgba(22,34,57,0.95);
   display: flex;
+  text-align: center;
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
@@ -60,4 +62,5 @@
 
 #x:hover span {
   transform: translateX(0.15em);
+  color: #f5a425;
 }

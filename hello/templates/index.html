@@ -10,39 +10,71 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     
     <title>Speech Processing by NLP</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <!-- <link rel="stylesheet" href="../static/style.css" /> -->
     <link rel="icon" type="image/png" href="../static/images/fac.png"/>
    <link rel="stylesheet" href="../static/css/button2.css" /> 
+
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    
+   <!-- Bootstrap core CSS -->
+   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+
+   
+   <link rel="stylesheet" href="../static/css/fontawesome.css">
+   <link rel="stylesheet" href="../static/css/templatemo-grad-school.css">
+   <link rel="stylesheet" href="../static/css/owl.css">
+   <link rel="stylesheet" href="../static/css/lightbox.css">
+
+    <style>
+        main
+        {
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+
+        }
+
+        #button:hover
+        {
+          border: 3px solid #f5a425;
+          transition: 0.3s;
+        }
+    </style>
   </head>
-  <body>
-    <header>
-      <h1>NATURAL LANGUAGE PROCESSING via LSTM </h1>
-      <h2 style="color: white; text-align: center;">Command Based Navigation</h2>
+  <body style="background-image: url(../static/images/choosing-bg.jpg);">
+
+    <header class="main-header clearfix" role="header">
+      <div class="logo">
+        <a href="/fyp"><em>VLN</em> System</a>
+        <a href="" style="position: fixed; right: 80px; font-size:13px; font-weight: 700; letter-spacing: 0.5px ;">Input</a>
+      </div>
+      <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+  
     </header>
-    <main>
-      <button id="button">Start listening</button>
-      <h4><div id="result" style ="color: teal;"></div></h4>
-      <h2><p id="goal_location"></p></h2>
-      <p id="message" hidden aria-hidden="true">
-        Your browser doesn't support Speech Recognition. Sorry.
-      </p>
+    
+    <main class="mt-5"> 
+          <button id="button" class="mt-5 px-5 py-3" style="color: white; background: none;">START LISTENING</button>
+          <h4><div id="result" class="mt-3" style ="color: teal;"></div></h4>
+
+          <h2><p id="goal_location"></p></h2>
+          <p id="message" hidden aria-hidden="true">
+            Your browser doesn't support Speech Recognition. Sorry.
+          </p>
+
+
       
        
-        <div id="ansh"> <a href="/navigation">
+        <div id="ansh" class="mt-5"> <a href="/navigation">
         <ul id="y">
-          <li id="x"><span>Go to path Navigation</span></li>
+          <li id="x" class="mt-5"><span class="justify-content-center" style="font-family: 'Montserrat'; font-size: 18px; font-weight: 500;">Go to Path Navigation</span></li>
          
         </ul></a>
         </div>
       
     </main>
-    <footer>
-     
-        <!-- Inspiration: https://dribbble.com/shots/4397812-Click-Me -->
-       
-        
-      <p style="color: white;">Copyright 2021 by Ansh, Parth Meswani and Parth Kansara   </p>
-    </footer>
+
     <script>
       window.addEventListener("DOMContentLoaded", () => {
         const button = document.getElementById("button");
