@@ -21,15 +21,17 @@ def nlpdemo(request):
 import networkx as nx 
 import matplotlib.pyplot as plt 
 import matplotlib.image as mpimg
-import cv2
+#import cv2
 # from collections import defaultdict
 # import pandas as pd
-def kansara(x):
+def kansara(dest):
 
     G = nx.Graph()
 
     
-    img1 = mpimg.imread('hello/static/images/5.jpg')
+    #img1 = mpimg.imread('hello/static/images/5.jpg')
+    img1=mpimg.imread('hello/static/images/5.jpg')
+    img2=mpimg.imread('hello/static/images/7.jpg')
     
 
     G.add_nodes_from(['lounge','television','speaker','hallway-1','stairs-1','stairs-2','stairs-3','stairs-4','railing','entrance table',
@@ -103,14 +105,14 @@ def kansara(x):
 
     # self.x=x
     #x = 'living room sofa'
-    short = nx.shortest_path(G,'lounge',x)
+    short = nx.shortest_path(G,'lounge',dest)
     print(short)
 
     all_nodes = G.nodes()
     alll = list(all_nodes)
 
-    print(type(alll))
-    print(type(short))
+    # print(type(alll))
+    # print(type(short))
 
     color_map = []
     for i in alll:
@@ -119,21 +121,26 @@ def kansara(x):
         else:
             color_map.append('red')
     
-    pos = {'lounge' : [1,1] ,'television' : [3,1] ,'speaker' : [5,1] ,'hallway-1' : [8,1] ,'stairs-1' : [9,2] ,'stairs-2' : [10,3] ,'stairs-3' : [11,4] ,'stairs-4' : [7,5] ,'railing' : [13,5] ,'entrance table' : [16,5] ,
-                  'entrance-vase' : [19,4] , 'entrance mirror' : [27,4],'door hinge' : [23,5] ,'entrance door' : [24,5] ,'entrance closet' : [27,4] ,'master bedroom chair' : [16,7] ,'master bedroom closet' : [16,8] ,
-                  'master bedroom nightstand' : [14,6] ,'master bedroom bed' : [16,6] ,'master bedroom lamp' : [15,5] ,'washroom door' : [12,6] ,'shower' : [8,7] ,'tap' : [8,8] ,'washroom mirror' : [6,10] ,
-                  'toiletries' : [8,10] ,'kitchen door' : [13,13] ,'kitchen cabinet' : [10,15] ,'kitchen counter' : [10,18] ,'induction cooker' : [5,23] ,'grill' : [5,27],'kitchen table' : [8,27] ,'dining room door' : [13,40] ,
-                  'trophy mantle' : [17,38] ,'dining room table' : [20,43] ,'coffee table' : [23,40] ,'dining room hallway-1' : [20,47] ,'coffee room chair' : [23,37] ,'bookshelf' : [28,40] ,'dining room sofa' : [32,45] ,
-                  'living room door' : [40,48] ,'living room chair' : [47,48] ,'living room sofa' : [47,50] ,'living room curtains' : [70,43] ,'telephone' : [75,43] ,'living room chair' : [40,43] ,'dining room hallway-2' : [23,54] ,
-                  'study table' : [24,54] ,'wash basin' : [27,54] ,'study room closet' : [30,54] ,'study room bed' : [32,54] ,'study room nightstand'  : [37,57] }
-
+    pos = {'lounge' : [1,1] ,'television' : [8,1] ,'speaker' : [13,1] ,'hallway-1' : [18,1] ,'stairs-1' : [23,2] ,'stairs-2' : [28,3] ,'stairs-3' : [33,4] ,'stairs-4' : [38,5] ,'railing' : [50,5] ,'entrance table' : [60,5] ,
+       'entrance-vase' : [65,4] , 'entrance mirror' : [70,4],'door hinge' : [72,5] ,'entrance door' : [77,5] ,'entrance closet' : [82,4] ,'master bedroom chair' : [18,7] ,'master bedroom closet' : [13,8] ,
+       'master bedroom nightstand' : [19,6] ,'master bedroom bed' : [21,6] ,'master bedroom lamp' : [14,5] ,'washroom door' : [12,6] ,'shower' : [8,7] ,'tap' : [8,8] ,'washroom mirror' : [2,10] ,
+       'toiletries' : [2,10] ,'kitchen door' : [-5,13] ,'kitchen cabinet' : [-10,15] ,'kitchen counter' : [-20,18] ,'induction cooker' : [-25,23] ,'grill' : [-20,27],'kitchen table' : [-8,27] ,'dining room door' : [0,40] ,
+       'trophy mantle' : [10,38] ,'dining room table' : [20,43] ,'coffee table' : [23,40] ,'dining room hallway-1' : [20,47] ,'coffee room chair' : [23,37] ,'bookshelf' : [32,40] ,'dining room sofa' : [37,45] ,
+       'living room door' : [40,48] ,'living room chair' : [47,48] ,'living room sofa' : [47,50] ,'living room curtains' : [70,43] ,'telephone' : [75,43] ,'living room chair' : [40,43] ,'dining room hallway-2' : [23,54] ,
+       'study table' : [24,54] ,'wash basin' : [27,54] ,'study room closet' : [30,54] ,'study room bed' : [32,54] ,'study room nightstand'  : [37,57] }
+    
     fig = plt.figure()
-    nx.draw(G, pos, with_labels = False, node_color = color_map,  
-            node_size = 200, font_size = 9, font_family = 'calibri', 
-            font_weight = 100, linewidths = 5, edge_color = 'white', 
-            font_color = 'white')
+    # nx.draw(G, pos, with_labels = False, node_color = color_map,  
+    #         node_size = 200, font_size = 9, font_family = 'calibri', 
+    #         font_weight = 100, linewidths = 5, edge_color = 'white', 
+    #         font_color = 'white')
     # nx.draw(G, with_labels=False, node_size=150, node_color = color_map, node_shape="o", alpha=0.5, linewidths=4,  
     #         font_color="grey", font_weight="bold", width=2,edge_color='white' )
+
+    nx.draw(G , pos, with_labels = False, node_color = color_map,  
+        node_size = 200, font_size = 9, font_family = 'calibri', 
+        font_weight = 100, linewidths = 5, edge_color = 'black', 
+        font_color = 'black')
 
     #to add images to the nodes
     ax=plt.gca()
@@ -142,6 +149,7 @@ def kansara(x):
     trans2 = fig.transFigure.inverted().transform
     imsize = 0.1 # this is the image size
     #for n in G.nodes():
+    #for lounge
     (x,y) = pos['lounge']
     xx,yy = trans((x,y)) # figure coordinates
     xa,ya = trans2((xx,yy)) # axes coordinates
@@ -150,8 +158,18 @@ def kansara(x):
     a.set_aspect('equal')
     a.axis('off')
 
+    #for destination
+    (a,b) = pos[dest]
+    aa,bb = trans((a,b)) # figure coordinates
+    ax,bx = trans2((aa,bb)) # axes coordinates
+    b = plt.axes([ax-imsize/2.0,bx-imsize/2.0, imsize, imsize ])
+    b.imshow(img2)
+    b.set_aspect('equal')
+    b.axis('off')
+
+
     
-    fig.set_facecolor('#00000F')
+    fig.set_facecolor('#87ceff')
     plt.savefig("simple_graph.png")
     img = mpimg.imread('simple_graph.png')
  
@@ -159,7 +177,7 @@ def kansara(x):
     # fig, ax = plt.subplots()
     # ax.imshow(img)
     # plt.grid('on')
-    plt.show()
+    #plt.show()
     return img
 
 @api_view(['GET', 'POST'])
