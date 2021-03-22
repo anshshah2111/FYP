@@ -34,78 +34,105 @@ def kansara(dest):
     img2=mpimg.imread('hello/static/images/7.jpg')
     
 
-    G.add_nodes_from(['lounge','television','speaker','hallway-1','stairs-1','stairs-2','stairs-3','stairs-4','railing','entrance table',
-                    'entrance-vase','door hinge','entrance door','entrance closet','master bedroom chair','master bedroom closet',
-                    'master bedroom nightstand','master bedroom bed','master bedroom lamp','washroom door','shower','tap','washroom mirror',
-                    'toiletries','kitchen door','kitchen cabinet','kitchen counter','induction cooker','grill','kitchen table','dining room door',
-                    'trophy mantle','dining room table','coffee table','dining room hallway-1','coffee room chair','bookshelf','dining room sofa',
-                    'living room door','living room chair','living room sofa','living room curtains','telephone','living room chair','dining room hallway-2',
-                    'study table','wash basin','study room closet','study room bed','study room nightstand'])
+    G.add_nodes_from(['entrance', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
+                    'washroom door', 'wash basin', 'commode', 'shower', 'hallway-1', 'study', 'wardrobe', 'whiteboard', 'study table', 'study chair', 
+                    'study sofa', 'library', 'hallway-2', 'bedroom door', 'left twin bed', 'right twin bed', 'bedroom nightstand', 'hat stand', 'hallway-3', 'laundry room',
+                    'press', 'washing machine', 'backyard window', 'folding station', 'stairs', 'chopping board', 'induction', 'kitchen cabinet', 'kitchen sink', 
+                    'kitchen counter', 'computer table', 'living room window', 'dining chair', 'dining table', 'thermostat', 'backyard door', 'plug points', 'sofa', 'couch',
+                    'leg rest', 'round table', 'television', 'speakers', 'living room closet'])
 
-    G.add_edge('lounge','television', weight=2, length=40, X=-0.6, Y=1, image=img1)
-    G.add_edge('television','speaker', weight=1, length=40)
-    G.add_edge('speaker','hallway-1', weight=2, length=40)
-    G.add_edge('hallway-1','stairs-1', weight=1, length=40)
-    G.add_edge('stairs-1','stairs-2', weight=1, length=40)
-    G.add_edge('stairs-2','stairs-3', weight=1, length=40)
-    G.add_edge('stairs-3','stairs-4', weight=1, length=40)
-    G.add_edge('stairs-4','railing', weight=1, length=40)
-    G.add_edge('stairs-4','master bedroom chair', weight=3, length=40)
-    G.add_edge('railing','entrance table', weight=2, length=40)
-    G.add_edge('entrance table','entrance-vase', weight=1, length=40)
-    G.add_edge('entrance table','door hinge', weight=1, length=40)
-    G.add_edge('door hinge','entrance door', weight=1, length=40)
-    G.add_edge('entrance door','entrance closet', weight=2, length=40)
-    G.add_edge('entrance door','entrance mirror', weight=2.5, length=40)
-    G.add_edge('entrance closet','entrance mirror', weight=1.5, length=40)
-    G.add_edge('master bedroom chair','master bedroom closet', weight=1, length=40)
-    G.add_edge('master bedroom closet','master bedroom nightstand', weight=1.5, length=40)
-    G.add_edge('master bedroom nightstand','master bedroom bed', weight=1, length=40)
-    G.add_edge('master bedroom bed','master bedroom lamp', weight=2, length=40)
-    G.add_edge('master bedroom lamp','washroom door', weight=3, length=40)
-    G.add_edge('washroom door','shower', weight=1.5, length=40)
-    G.add_edge('shower','tap', weight=1, length=40)
-    G.add_edge('tap','washroom mirror', weight=1, length=40)
-    G.add_edge('washroom door','toiletries', weight=2, length=40)
-    G.add_edge('toiletries','kitchen door', weight=4, length=40)
-    G.add_edge('kitchen door','kitchen cabinet', weight=2, length=40)
-    G.add_edge('washroom mirror','kitchen door', weight=7, length=40)
-    G.add_edge('kitchen cabinet','kitchen counter', weight=2, length=40)
-    G.add_edge('kitchen counter','induction cooker', weight=1, length=40)
-    G.add_edge('kitchen counter','kitchen table', weight=2, length=40)
-    G.add_edge('induction cooker','grill', weight=1, length=40)
-    G.add_edge('grill','kitchen table', weight=4, length=40)
-    G.add_edge('kitchen table','dining room door', weight=3, length=40)
-    G.add_edge('dining room door','trophy mantle', weight=3, length=40)
-    G.add_edge('trophy mantle','dining room table', weight=4, length=40)
-    G.add_edge('trophy mantle','coffee table', weight=2, length=50)
-    G.add_edge('dining room table','dining room hallway-1', weight=7, length=50)
-    G.add_edge('dining room table','coffee table', weight=4, length=50)
-    G.add_edge('dining room table','living room chair', weight=8, length=50)
-    G.add_edge('coffee table','coffee room chair', weight=1, length=50)
-    G.add_edge('coffee table','bookshelf', weight=4, length=50)
-    G.add_edge('dining room hallway-1','dining room hallway-2', weight=1, length=50)
-    G.add_edge('coffee room chair','bookshelf', weight=2, length=50)
-    G.add_edge('bookshelf','living room chair', weight=5, length=50)
-    G.add_edge('bookshelf','dining room sofa', weight=2, length=50)
-    G.add_edge('dining room sofa','living room door', weight=3, length=50)
-    G.add_edge('living room door','living room chair', weight=2, length=50)
-    G.add_edge('living room door','living room sofa', weight=4, length=50)
-    G.add_edge('living room door','living room curtains', weight=8, length=50)
-    G.add_edge('living room chair','living room sofa', weight=8, length=50)
-    G.add_edge('living room sofa','living room curtains', weight=4, length=50)
-    G.add_edge('living room sofa','living room curtains', weight=2, length=50)
-    G.add_edge('living room sofa','telephone', weight=2, length=50)
-    G.add_edge('living room curtains','telephone', weight=2, length=50)
-    G.add_edge('dining room hallway-2','study table', weight=4, length=50)
-    G.add_edge('study table','wash basin', weight=2, length=50)
-    G.add_edge('wash basin','study room closet', weight=3, length=50)
-    G.add_edge('study room closet','study room bed', weight=2, length=50)
-    G.add_edge('study room bed','study room nightstand', weight=3, length=50)
+    G.add_edge('entrance', 'master bedroom door', weight=3)
+    G.add_edge('entrance', 'shoe rack', weight=6)
+    G.add_edge('entrance', 'washroom door', weight=8)
+    G.add_edge('entrance', 'hallway-1', weight=12)
+    G.add_edge('master bedroom door', 'frontyard window', weight=6 )
+    G.add_edge('master bedroom door', 'master bed', weight= 7)
+    G.add_edge('master bedroom door', 'nightstand', weight= 8)
+    G.add_edge('frontyard window', 'nightstand', weight= 4)
+    G.add_edge('frontyard window', 'master bed', weight= 6)
+    G.add_edge('master bed', 'master bedroom lamp', weight=3 )
+    G.add_edge('master bed', 'bathroom door', weight= 4)
+    G.add_edge('master bedroom lamp', 'bathroom door', weight= 2)
+    G.add_edge('bathroom door', 'weighing scale', weight=6)
+    G.add_edge('bathroom door', 'toiletries', weight=2 )
+    G.add_edge('bathroom door', 'bathroom sink', weight=7 )
+    G.add_edge('weighing scale', 'bathroom sink', weight=2 )
+    G.add_edge('weighing scale', 'toiletries', weight=6 )
+    G.add_edge('shoe rack', 'washroom door', weight= 3 )
+    G.add_edge('shoe rack', 'hallway-1', weight=8 )
+    G.add_edge('washroom door', 'shower', weight=9 )
+    G.add_edge('washroom door', 'commode', weight=5 )
+    G.add_edge('washroom door', 'wash basin', weight=7 )
+    G.add_edge('shower', 'commode', weight= 7)
+    G.add_edge('shower', 'wash basin', weight= 5)
+    G.add_edge('wash basin', 'commode', weight=2 )
+    G.add_edge('washroom door', 'hallway-1', weight=6)
+    G.add_edge('hallway-1', 'study', weight=7 )
+    G.add_edge('hallway-1', 'hallway-2', weight=11 )
+    G.add_edge('study', 'wardrobe', weight=2 )
+    G.add_edge('study', 'whiteboard', weight=5 )
+    G.add_edge('study', 'study table', weight=9 )
+    G.add_edge('study', 'study chair', weight=8 )
+    G.add_edge('study', 'study sofa', weight=8 )
+    G.add_edge('study', 'library', weight=6 )
+    G.add_edge('study sofa', 'library', weight=2)
+    G.add_edge('study sofa', 'whiteboard', weight=4 )
+    G.add_edge('study chair', 'study table', weight=2 )
+    G.add_edge('study table', 'whiteboard', weight= 3)
+    G.add_edge('study', 'hallway-2', weight=7)
+    G.add_edge('hallway-2', 'bedroom door', weight=5 )
+    G.add_edge('hallway-2', 'hallway-3', weight=7)
+    G.add_edge('bedroom door', 'hat stand', weight=2)
+    G.add_edge('bedroom door', 'left twin bed', weight=4)
+    G.add_edge('bedroom door', 'right twin bed', weight=4 )
+    G.add_edge('bedroom door', 'bedroom nightstand', weight=6 )
+    G.add_edge('bedroom door', 'hallway-2', weight=4 )
+    G.add_edge('hallway-3', 'laundry room', weight=6 )
+    G.add_edge('hallway-3', 'stairs', weight=8 )
+    G.add_edge('laundry room', 'press', weight=2 )
+    G.add_edge('laundry room', 'washing machine', weight= 5)
+    G.add_edge('washing machine', 'backyard window', weight=3 )
+    G.add_edge('washing machine', 'folding station', weight=2)
+    G.add_edge('laundry room', 'stairs', weight=4 )
+    G.add_edge('stairs', 'chopping board', weight=3 )
+    G.add_edge('stairs', 'kitchen sink', weight=6 )
+    G.add_edge('chopping board', 'kitchen sink', weight=4 )
+    G.add_edge('chopping board', 'induction', weight=6)
+    G.add_edge('chopping board', 'kitchen counter', weight=8)
+    G.add_edge('kitchen sink', 'induction', weight=3 )
+    G.add_edge('kitchen sink', 'kitchen counter', weight= 2)
+    G.add_edge('induction', 'kitchen counter', weight=3)
+    G.add_edge('induction', 'kitchen cabinet', weight=4 )
+    G.add_edge('kitchen counter', 'kitchen cabinet', weight=3 )
+    G.add_edge('kitchen counter', 'computer table', weight=7)
+    G.add_edge('kitchen counter', 'dining table', weight=12)
+    G.add_edge('computer table', 'living room window', weight=3)
+    G.add_edge('living room window', 'dining chair', weight=5 )
+    G.add_edge('living room window', 'thermostat', weight=7 )
+    G.add_edge('dining chair', 'dining table', weight=1)
+    G.add_edge('dining table', 'thermostat', weight=4)
+    G.add_edge('dining table', 'backyard door', weight= 3)
+    G.add_edge('dining table', 'couch', weight=4 )
+    G.add_edge('dining table', 'leg rest', weight=4)
+    G.add_edge('thermostat', 'backyard door', weight=3 )
+    G.add_edge('backyard door', 'plug points', weight=4 )
+    G.add_edge('backyard door', 'sofa', weight=6)
+    G.add_edge('backyard door', 'couch', weight=5)
+    G.add_edge('plug points', 'sofa', weight=3)
+    G.add_edge('plug points', 'speakers', weight=3)
+    G.add_edge('sofa', 'round table', weight=2)
+    G.add_edge('couch', 'round table', weight=2)
+    G.add_edge('round table', 'leg rest', weight=2)
+    G.add_edge('couch', 'leg rest', weight=1)
+    G.add_edge('couch', 'television', weight=5 )
+    G.add_edge('couch', 'living room closet', weight=6 )
+    G.add_edge('round table', 'speakers', weight=4 )
+    G.add_edge('speakers', 'television', weight=2)
+    G.add_edge('television', 'living room closet', weight=2)
 
-    # self.x=x
-    #x = 'living room sofa'
-    short = nx.shortest_path(G,'lounge',dest)
+
+    destination = 'round table'
+    short = nx.shortest_path(G,'entrance',destination)
     print(short)
 
     all_nodes = G.nodes()
@@ -117,40 +144,38 @@ def kansara(dest):
     color_map = []
     for i in alll:
         if i in short:
-            color_map.append('green')
+            color_map.append('#00ff00')
         else:
-            color_map.append('red')
-    
-    pos = {'lounge' : [1,1] ,'television' : [8,1] ,'speaker' : [13,1] ,'hallway-1' : [18,1] ,'stairs-1' : [23,2] ,'stairs-2' : [28,3] ,'stairs-3' : [33,4] ,'stairs-4' : [38,5] ,'railing' : [50,5] ,'entrance table' : [60,5] ,
-       'entrance-vase' : [65,4] , 'entrance mirror' : [70,4],'door hinge' : [72,5] ,'entrance door' : [77,5] ,'entrance closet' : [82,4] ,'master bedroom chair' : [18,7] ,'master bedroom closet' : [13,8] ,
-       'master bedroom nightstand' : [19,6] ,'master bedroom bed' : [21,6] ,'master bedroom lamp' : [14,5] ,'washroom door' : [12,6] ,'shower' : [8,7] ,'tap' : [8,8] ,'washroom mirror' : [2,10] ,
-       'toiletries' : [2,10] ,'kitchen door' : [-5,13] ,'kitchen cabinet' : [-10,15] ,'kitchen counter' : [-20,18] ,'induction cooker' : [-25,23] ,'grill' : [-20,27],'kitchen table' : [-8,27] ,'dining room door' : [0,40] ,
-       'trophy mantle' : [10,38] ,'dining room table' : [20,43] ,'coffee table' : [23,40] ,'dining room hallway-1' : [20,47] ,'coffee room chair' : [23,37] ,'bookshelf' : [32,40] ,'dining room sofa' : [37,45] ,
-       'living room door' : [40,48] ,'living room chair' : [47,48] ,'living room sofa' : [47,50] ,'living room curtains' : [70,43] ,'telephone' : [75,43] ,'living room chair' : [40,43] ,'dining room hallway-2' : [23,54] ,
-       'study table' : [24,54] ,'wash basin' : [27,54] ,'study room closet' : [30,54] ,'study room bed' : [32,54] ,'study room nightstand'  : [37,57] }
-    
+            color_map.append('#87ceff')
+
+    pos = {'entrance' : [65,9] , 'master bedroom door' : [63,12] , 'master bed' : [61,30] , 'nightstand' : [64,39] ,'frontyard window' : [68,27] ,
+        'master bedroom lamp' : [59,39] , 'bathroom door' : [57,36] , 'weighing scale' : [53,39] , 'toiletries' : [58,30] , 'bathroom sink' : [53,30] , 'shoe rack' : [57,6] , 
+        'washroom door' : [55,12] , 'wash basin' : [53,21] , 'commode' : [56,21] , 'shower' : [50,15] , 'hallway-1' : [52,6] , 'study' : [48,12] , 'wardrobe' : [46,15] , 'whiteboard' : [43,18] ,
+        'study table' : [41,27] , 'study chair' : [43,24] , 
+        'study sofa' : [48,33] , 'library' : [45,33] , 'hallway-2' : [43,6] , 'bedroom door' : [36,12] , 'left twin bed' : [34,30] , 'right twin bed' : [38,30] ,
+        'bedroom nightstand' : [36,36] , 'hat stand' : [33,15] , 'hallway-3' : [33,6] , 'laundry room' : [29,12] ,
+        'press' : [34,15] , 'washing machine' : [34,30] , 'backyard window' : [33,36] , 'folding station' : [31,27] , 'stairs' : [30,9] ,
+        'chopping board' : [29,15] , 'induction' : [29,24] , 'kitchen cabinet' : [29,33] , 'kitchen sink' : [24,15] , 
+        'kitchen counter' : [24,30] , 'computer table' : [21,42] , 'living room window' : [19,45] , 'dining chair' : [17,36] , 'dining table' : [16,33] ,
+        'thermostat' : [13,42] , 'backyard door' : [8,36] , 'plug points' : [8,24] , 'sofa' : [10,21] , 'couch' : [14,30] ,
+        'leg rest' : [16,21] , 'round table' : [14,15] , 'television' : [12,9] , 'speakers' : [9,9] , 'living room closet' : [16,9] }
     fig = plt.figure()
-    # nx.draw(G, pos, with_labels = False, node_color = color_map,  
+    # nx.draw(G , pos, with_labels = False, node_color = color_map,  
     #         node_size = 200, font_size = 9, font_family = 'calibri', 
     #         font_weight = 100, linewidths = 5, edge_color = 'white', 
     #         font_color = 'white')
-    # nx.draw(G, with_labels=False, node_size=150, node_color = color_map, node_shape="o", alpha=0.5, linewidths=4,  
-    #         font_color="grey", font_weight="bold", width=2,edge_color='white' )
 
     nx.draw(G , pos, with_labels = False, node_color = color_map,  
-        node_size = 200, font_size = 9, font_family = 'calibri', 
-        font_weight = 100, linewidths = 5, edge_color = 'black', 
-        font_color = 'black')
+            node_size = 30, font_size = 9, font_family = 'calibri', 
+            font_weight = 100, linewidths = 5, edge_color = 'white', 
+            font_color = 'black')
 
-    #to add images to the nodes
     ax=plt.gca()
     fig=plt.gcf()
     trans = ax.transData.transform
     trans2 = fig.transFigure.inverted().transform
-    imsize = 0.1 # this is the image size
-    #for n in G.nodes():
-    #for lounge
-    (x,y) = pos['lounge']
+    imsize = 0.1 
+    (x,y) = pos['entrance']
     xx,yy = trans((x,y)) # figure coordinates
     xa,ya = trans2((xx,yy)) # axes coordinates
     a = plt.axes([xa-imsize/2.0,ya-imsize/2.0, imsize, imsize ])
@@ -158,8 +183,8 @@ def kansara(dest):
     a.set_aspect('equal')
     a.axis('off')
 
-    #for destination
-    (a,b) = pos[dest]
+
+    (a,b) = pos[destination]
     aa,bb = trans((a,b)) # figure coordinates
     ax,bx = trans2((aa,bb)) # axes coordinates
     b = plt.axes([ax-imsize/2.0,bx-imsize/2.0, imsize, imsize ])
@@ -167,9 +192,13 @@ def kansara(dest):
     b.set_aspect('equal')
     b.axis('off')
 
-
-    
-    fig.set_facecolor('#87ceff')
+    fig.set_facecolor('#172238')
+    #plt.savefig("simple_graph.png")
+    # img = plt.imread('env.jpeg')
+    # fig, ax = plt.subplots()
+    # ax.imshow(img)
+    plt.grid('on')
+    #plt.show()
     plt.savefig("simple_graph.png")
     img = mpimg.imread('simple_graph.png')
  
@@ -187,13 +216,12 @@ def hello_world(request):
         #print(myDict['instruction'])
         instruction=myDict['instruction']
         print("INS IS",instruction)
-        locations = ['lounge','television','speaker','hallway-1','stairs-1','stairs-2','stairs-3','stairs-4','railing','entrance table',
-                  'entrance-vase','door hinge','entrance door','entrance closet','master bedroom chair','master bedroom closet',
-                  'master bedroom nightstand','master bedroom bed','master bedroom lamp','washroom door','shower','tap','washroom mirror',
-                  'toiletries','kitchen door','kitchen cabinet','kitchen counter','induction cooker','grill','kitchen table','dining room door',
-                  'trophy mantle','dining room table','coffee table','dining room hallway-1','coffee room chair','bookshelf','dining room sofa',
-                  'living room door','living room chair','living room sofa','living room curtains','telephone','living room chair','dining room hallway-2',
-                  'study table','wash basin','study room closet','study room bed','study room nightstand']
+        locations = ['entrance', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
+                    'washroom door', 'wash basin', 'commode', 'shower', 'hallway-1', 'study', 'wardrobe', 'whiteboard', 'study table', 'study chair', 
+                    'study sofa', 'library', 'hallway-2', 'bedroom door', 'left twin bed', 'right twin bed', 'bedroom nightstand', 'hat stand', 'hallway-3', 'laundry room',
+                    'press', 'washing machine', 'backyard window', 'folding station', 'stairs', 'chopping board', 'induction', 'kitchen cabinet', 'kitchen sink', 
+                    'kitchen counter', 'computer table', 'living room window', 'dining chair', 'dining table', 'thermostat', 'backyard door', 'plug points', 'sofa', 'couch',
+                    'leg rest', 'round table', 'television', 'speakers', 'living room closet']
         instruction_list = instruction.split(" ")
         # re.split("\s+", instruction)
         goal_location = ''
