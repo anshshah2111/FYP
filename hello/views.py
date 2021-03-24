@@ -30,8 +30,8 @@ def kansara(destination):
 
     
     #img1 = mpimg.imread('hello/static/images/5.jpg')
-    img1=mpimg.imread('hello/static/images/5.jpg')
-    img2=mpimg.imread('hello/static/images/7.jpg')
+    img1=mpimg.imread('hello/static/images/E.png')
+    img2=mpimg.imread('hello/static/images/G.png')
     
 
     G.add_nodes_from(['entrance', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
