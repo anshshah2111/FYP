@@ -4,21 +4,52 @@
 <html lang="en">
   <head>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     
     <title>Speech Processing by NLP</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="../static/style.css" />
    <link rel="stylesheet" href="../static/css/button2.css" /> 
+   <link rel="icon" type="image/png" href="../static/images/fac.png"/>
+
+
+    
+   <!-- Bootstrap core CSS -->
+   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+
+   
+   <link rel="stylesheet" href="../static/css/fontawesome.css">
+   <link rel="stylesheet" href="../static/css/templatemo-grad-school.css">
+   <link rel="stylesheet" href="../static/css/owl.css">
+   <link rel="stylesheet" href="../static/css/lightbox.css">
   </head>
-  <body>
-    <header>
-      <h1> <a href="/fyp">Natural Language Processing: Using Google Text to Speech & self-created LSTM API</a></h1>
+  <body style="padding: 0; background-image: url(../static/images/nlp.png); background-size: cover;   font-family: 'Montserrat'; font-weight: 500;
+  ">
+
+    <header class="main-header clearfix" role="header">
+      <div class="logo">
+        <a href="/fyp"><em>VLN</em> System</a>
+      </div>
+      <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+      <nav id="menu" class="main-nav" role="navigation">
+        <ul class="main-menu">
+          <li></li><a href="#section2"></a> </li>
+          <li><a href="#section2">System Modules</a>
+          </li>
+          <li><a href="#section4">Properties</a></li>
+           <li><a href="#section5">Video</a></li>
+          <li><a href="/workspace" class="external">Workspace</a></li>
+        </ul>
+      </nav>
     </header>
-    <main>
-      <button id="button">Start listening</button>
+
+
+    <main class="mt-5">
+      <button id="button" class="mt-5">Start listening</button>
       <div id="result"></div>
       <p id="goal_location"></p>
       <p id="message" hidden aria-hidden="true">
@@ -32,13 +63,7 @@
         </div>  -->
       
     </main>
-    <footer>
-     
-        <!-- Inspiration: https://dribbble.com/shots/4397812-Click-Me -->
-       
-        
-      <p>Built for Implementation by Parth, Ansh & Parth  </p>
-    </footer>
+
     <script>
       window.addEventListener("DOMContentLoaded", () => {
         const button = document.getElementById("button");
@@ -123,5 +148,16 @@
       });
     </script>
     <!-- <script src="../static/js/button2.js"></script>  -->
+    <footer style="position: absolute; bottom:0px; width: 100%;">  
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p><i class="fa fa-copyright justify-content-center"></i> Copyright 2021 by Ansh, Parth Kansara & Parth Meswani 
+            
+             | Design: <a href="https://templatemo.com" rel="sponsored" target="_parent">Fulfilled for Final Year Project</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -24,7 +24,7 @@ import matplotlib.image as mpimg
 #import cv2
 # from collections import defaultdict
 # import pandas as pd
-def kansara(dest):
+def kansara(destination):
 
     G = nx.Graph()
 
@@ -131,7 +131,7 @@ def kansara(dest):
     G.add_edge('television', 'living room closet', weight=2)
 
 
-    destination = 'round table'
+    # destination = 'round table'
     short = nx.shortest_path(G,'entrance',destination)
     print(short)
 
