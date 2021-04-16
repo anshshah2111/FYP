@@ -166,7 +166,7 @@ def kansara(destination):
     #         font_color = 'white')
 
     nx.draw(G , pos, with_labels = False, node_color = color_map,  
-            node_size = 30, font_size = 9, font_family = 'calibri', 
+            node_size = 30, node_shape="o", alpha=0.5, font_size = 9, font_family = 'calibri', 
             font_weight = 100, linewidths = 5, edge_color = 'white', 
             font_color = 'black')
 
@@ -192,7 +192,7 @@ def kansara(destination):
     b.set_aspect('equal')
     b.axis('off')
 
-    fig.set_facecolor('#172238')
+       fig.set_facecolor('black')
     #plt.savefig("simple_graph.png")
     # img = plt.imread('env.jpeg')
     # fig, ax = plt.subplots()
