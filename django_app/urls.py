@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from hello.views import index, hello_world, fyp, workspace, navigation, nlpdemo,img_response
+from hello.views import index, hello_world, fyp, workspace, navigation, nlpdemo,img_response, objdetect
 
 
 urlpatterns = [
@@ -27,7 +27,9 @@ urlpatterns = [
     path('workspace/',workspace),
     path('navigation/',navigation),
     path('nlpdemo/',nlpdemo),
-    path('getImage/',img_response)
+    path('getImage/',img_response),
+    path('objdetect/',objdetect)
+
     
 
     

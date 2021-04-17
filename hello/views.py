@@ -18,6 +18,8 @@ def navigation(request):
     return render(request,'./navigation.html')
 def nlpdemo(request):
     return render(request,'./nlpdemo.html')
+def objdetect(request):
+    return render(request,'./objdetect.html')
 import networkx as nx 
 import matplotlib.pyplot as plt 
 import matplotlib.image as mpimg
