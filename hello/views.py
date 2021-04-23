@@ -194,7 +194,7 @@ def kansara(destination):
     b.set_aspect('equal')
     b.axis('off')
 
-       fig.set_facecolor('black')
+    fig.set_facecolor('black')
     #plt.savefig("simple_graph.png")
     # img = plt.imread('env.jpeg')
     # fig, ax = plt.subplots()

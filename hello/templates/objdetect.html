@@ -69,15 +69,23 @@
           <img src="../static/images/office.jpg" style="width: 100%; height: 100%">
         </div>
         <div class="col-md-6 my-5">
-          <img src="../static/images/detection2.jpg" style="width: 100%; height: 100%">
+          <img src="../static/images/detection2.jpg" id="od" style="width: 100%; height: 100%; visibility: hidden;">
         </div>
       </div>
       <div class="row justify-content-center">
-        <h6 style="color: white;">Object Detection algorithm uses the YOLOv3 Model, trained on the MS COCO Dataset</h6>
+        <button onclick="od()">Detect Objects</button><br>
+        <!-- <h6 style="color: white;">Object Detection algorithm uses the YOLOv3 Model, trained on the MS COCO Dataset</h6> -->
       </div>
     </div>
 
     <script>
+      function od(){
+        setTimeout(function(){
+            document.getElementById("od").style.visibility = "visible";
+          }, 3000);
+        
+
+      }
       window.addEventListener("DOMContentLoaded", () => {
         const button = document.getElementById("button");
         const result = document.getElementById("result");
