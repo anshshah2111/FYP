@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from gtts import gTTS
+from io import BytesIO
 import matplotlib.image as mpimg 
 import re
 import requests
@@ -36,17 +38,17 @@ def kansara(destination):
     img2=mpimg.imread('hello/static/images/G.png')
     
 
-    G.add_nodes_from(['entrance', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
+    G.add_nodes_from(['door', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
                     'washroom door', 'wash basin', 'commode', 'shower', 'hallway-1', 'study', 'wardrobe', 'whiteboard', 'study table', 'study chair', 
                     'study sofa', 'library', 'hallway-2', 'bedroom door', 'left twin bed', 'right twin bed', 'bedroom nightstand', 'hat stand', 'hallway-3', 'laundry room',
                     'press', 'washing machine', 'backyard window', 'folding station', 'stairs', 'chopping board', 'induction', 'kitchen cabinet', 'kitchen sink', 
                     'kitchen counter', 'computer table', 'living room window', 'dining chair', 'dining table', 'thermostat', 'backyard door', 'plug points', 'sofa', 'couch',
                     'leg rest', 'round table', 'television', 'speakers', 'living room closet'])
 
-    G.add_edge('entrance', 'master bedroom door', weight=3)
-    G.add_edge('entrance', 'shoe rack', weight=6)
-    G.add_edge('entrance', 'washroom door', weight=8)
-    G.add_edge('entrance', 'hallway-1', weight=12)
+    G.add_edge('door', 'master bedroom door', weight=3)
+    G.add_edge('door', 'shoe rack', weight=6)
+    G.add_edge('door', 'washroom door', weight=8)
+    G.add_edge('door', 'hallway-1', weight=12)
     G.add_edge('master bedroom door', 'frontyard window', weight=6 )
     G.add_edge('master bedroom door', 'master bed', weight= 7)
     G.add_edge('master bedroom door', 'nightstand', weight= 8)
@@ -134,14 +136,24 @@ def kansara(destination):
 
 
     # destination = 'round table'
-    short = nx.shortest_path(G,'entrance',destination)
+    short = nx.shortest_path(G,'door',destination)
     print(short)
+    sentence=" to "
+    sentence=sentence.join(short)
+    sentence1="Hi, to reach the goal location the user should navigate from "+ sentence + ".Thank you"
+    # mp3_fp = BytesIO()
+    # tts = gTTS(sentence, lang='en', slow=True)
+    # #tts.write_to_fp(mp3_fp)
+    # tts.save('parth.mp3')
+    f=open('short.txt','w')
+    f.write(sentence1)
+    f.close()
 
     all_nodes = G.nodes()
     alll = list(all_nodes)
 
     # print(type(alll))
-    # print(type(short))
+    #print(type(short))
 
     color_map = []
     for i in alll:
@@ -150,7 +162,7 @@ def kansara(destination):
         else:
             color_map.append('#87ceff')
 
-    pos = {'entrance' : [65,9] , 'master bedroom door' : [63,12] , 'master bed' : [61,30] , 'nightstand' : [64,39] ,'frontyard window' : [68,27] ,
+    pos = {'door' : [65,9] , 'master bedroom door' : [63,12] , 'master bed' : [61,30] , 'nightstand' : [64,39] ,'frontyard window' : [68,27] ,
         'master bedroom lamp' : [59,39] , 'bathroom door' : [57,36] , 'weighing scale' : [53,39] , 'toiletries' : [58,30] , 'bathroom sink' : [53,30] , 'shoe rack' : [57,6] , 
         'washroom door' : [55,12] , 'wash basin' : [53,21] , 'commode' : [56,21] , 'shower' : [50,15] , 'hallway-1' : [52,6] , 'study' : [48,12] , 'wardrobe' : [46,15] , 'whiteboard' : [43,18] ,
         'study table' : [41,27] , 'study chair' : [43,24] , 
@@ -177,7 +189,7 @@ def kansara(destination):
     trans = ax.transData.transform
     trans2 = fig.transFigure.inverted().transform
     imsize = 0.1 
-    (x,y) = pos['entrance']
+    (x,y) = pos['door']
     xx,yy = trans((x,y)) # figure coordinates
     xa,ya = trans2((xx,yy)) # axes coordinates
     a = plt.axes([xa-imsize/2.0,ya-imsize/2.0, imsize, imsize ])
@@ -194,7 +206,7 @@ def kansara(destination):
     b.set_aspect('equal')
     b.axis('off')
 
-       fig.set_facecolor('black')
+    fig.set_facecolor('black')
     #plt.savefig("simple_graph.png")
     # img = plt.imread('env.jpeg')
     # fig, ax = plt.subplots()
@@ -218,7 +230,7 @@ def hello_world(request):
         #print(myDict['instruction'])
         instruction=myDict['instruction']
         print("INS IS",instruction)
-        locations = ['entrance', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
+        locations = ['door', 'master bedroom door', 'master bed', 'nightstand','frontyard window', 'master bedroom lamp', 'bathroom door', 'weighing scale', 'toiletries', 'bathroom sink', 'shoe rack', 
                     'washroom door', 'wash basin', 'commode', 'shower', 'hallway-1', 'study', 'wardrobe', 'whiteboard', 'study table', 'study chair', 
                     'study sofa', 'library', 'hallway-2', 'bedroom door', 'left twin bed', 'right twin bed', 'bedroom nightstand', 'hat stand', 'hallway-3', 'laundry room',
                     'press', 'washing machine', 'backyard window', 'folding station', 'stairs', 'chopping board', 'induction', 'kitchen cabinet', 'kitchen sink', 
@@ -266,5 +278,15 @@ def img_response(request):
         "./simple_graph.png", "rb") as image_file:
         image_data = base64.b64encode(image_file.read()).decode('utf-8')
 
-    return Response({"image":image_data})
+    # with open(
+    #     "./short.txt", "rb") as f:
+    #     audio_file=f.read()
+    #     print("audio is",type(audio_file))
+    f = open("short.txt", "r")
+    short=f.read()
+
+    return Response({"image":image_data,"short":short})
+    
+
+  
 
