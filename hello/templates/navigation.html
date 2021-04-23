@@ -41,6 +41,14 @@
         background: none;
         border: none;
       }
+      #audio{
+        color: white;
+        font-size: 18px;
+        font-family: 'Montserrat';
+        font-weight: 500;
+        background: none;
+        border: none;
+      }
 
       #button:hover{
         /* color: #f5a425; */
@@ -85,6 +93,14 @@
         </ul>
       </nav>
     </div>
+    <div class="row mt-3 justify-content-center" >
+      <div>
+        <button id="audio" onclick="play_sound()">
+          Get Voice Assistance
+        </button>
+      </div>
+    </div>
+    
 </div>
 
 
@@ -158,11 +174,19 @@
         console.log("")
         const res=await axios.get('/getImage/');
         console.log("GET IMAGE",res)
+        localStorage.setItem("short", res.data.short)
         var e=document.getElementById("myimg")
         var e1=document.getElementById("carousel-select")
         e.src="data:image/png;base64,"+res.data.image
         e1.src="data:image/png;base64,"+res.data.image
 
+
+      }
+
+      function play_sound(){
+        var msg = new SpeechSynthesisUtterance(localStorage.getItem("short"));
+        msg.rate=0.75;
+        window.speechSynthesis.speak(msg);
 
       }
     </script>
